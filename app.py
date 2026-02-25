@@ -8,7 +8,7 @@ app= Flask(__name__)
 # allow requests from external origins
 CORS(app) 
 # Configure our upload folder.
-app.config['upload_folder']='static\images'
+app.config['upload_folder']='static/images'
 
 @app.route('/api/signup',methods=['POST'])
 def signup():  
@@ -113,7 +113,7 @@ from requests.auth import HTTPBasicAuth
 @app.route('/api/mpesa_payment', methods=['POST'])
 def mpesa_payment():
         if request.method == 'POST':
-            # Extract POST Values sent
+            # Extract POST Values sent from the client side.
             amount = request.form['amount']
             phone = request.form['phone']
 
@@ -125,7 +125,7 @@ def mpesa_payment():
             api_URL = "https://sandbox.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials"  # AUTH URL
             # Provide your consumer_key and consumer_secret 
             response = requests.get(api_URL, auth=HTTPBasicAuth(consumer_key, consumer_secret))
-            # Get response as Dictionary
+            # Get response as Dictionary 
             data = response.json()
             # Retrieve the Provide Token
             # Token allows you to proceed with the transaction
@@ -171,4 +171,4 @@ def mpesa_payment():
             return jsonify({"message": "An MPESA Prompt has been sent to Your Phone, Please Check & Complete Payment"})
 # Run app.
 if __name__=='__main__':
-    app.run(debug=True)
+    app.run(debug=True) 
