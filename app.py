@@ -8,7 +8,7 @@ app= Flask(__name__)
 # allow requests from external origins
 CORS(app) 
 # Configure our upload folder.
-app.config['upload_folder']='static/images'
+app.config['upload_folder']='static/images' 
 
 @app.route('/api/signup',methods=['POST'])
 def signup():  
